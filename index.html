@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Selamat ulang tahun ke-19, Nama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -12,7 +15,7 @@
   <nav class="nav" aria-label="Navigasi utama">
     <a href="#beranda">Beranda</a>
     <a href="#kenangan">Kenangan</a>
-    <a href="#video">Audio Visual</a>
+    <a href="#video">Video</a>
     <a href="#surat">Surat</a>
   </nav>
 
@@ -23,7 +26,7 @@
     <div class="hero-photo">
       <span class="age" aria-hidden="true">19</span>
       <!-- ASSET: Ganti assets/foto_hero.png (PNG cutout transparan, rasio sekitar 3:4) -->
-      <img src="assets/foto1.png" alt="Foto Agnia" width="600" height="800">
+      <div class="cutout"><img src="assets/foto1.png" alt="Foto Agnia" width="600" height="800" decoding="async" fetchpriority="high"></div>
     </div>
 
     <a class="btn" href="#kenangan">Lihat kenangan kita</a>
@@ -36,15 +39,15 @@
 
       <!-- ASSET: Ganti foto_1.jpg sampai foto_6.jpg di folder assets, edit caption sesukamu -->
       <ul class="grid">
-        <li><button class="thumb" data-full="assets/kotak-1.jpg" data-caption="Awal Cerita Kita"><img src="assets/kotak-1.jpg" alt="Awal Cerita Kita" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-2.jpg" data-caption="Ini Masuknya First Date Ga Sih?"><img src="assets/kotak-2.jpg" alt="Ini Masuknya First Date Ga Sih?" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-3.jpg" data-caption="Se-Sering itu Motoran Malem Malem"><img src="assets/kotak-3.jpg" alt="Se-Sering itu Motoran Malem Malem" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-4.jpg" data-caption="Ini Namanya Couple Delegasi"><img src="assets/kotak-4.jpg" alt="Ini Namanya Couple Delegasi" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-5.jpg" data-caption="Ditemenin Kerja Yeayyy"><img src="assets/kotak-5.jpg" alt="Ditemenin Kerja Yeayyy" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-6.jpg" data-caption="PS DATE YEEPPEEEE"><img src="assets/kotak-6.jpg" alt="PS DATE YEEPPEEEE" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-7.jpg" data-caption="Mirror Selfie(1)"><img src="assets/kotak-7.jpg" alt="Mirror Selfie(1)" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-8.jpg" data-caption="LUCU BGT SAYANGGGG"><img src="assets/kotak-8.jpg" alt="LUCU BGT SAYANGGGG" loading="lazy"></button></li>
-        <li><button class="thumb" data-full="assets/kotak-9.jpg" data-caption="Mirror Selfie(2)"><img src="assets/kotak-9.jpg" alt="Mirror Selfie(2)" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-1.jpg" data-caption="Awal Cerita Kita"><img src="assets/kotak-1.jpg" alt="Awal Cerita Kita" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-2.jpg" data-caption="Ini Masuknya First Date Ga Sih?"><img src="assets/kotak-2.jpg" alt="Ini Masuknya First Date Ga Sih?" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-3.jpg" data-caption="Se-Sering itu Motoran Malem Malem"><img src="assets/kotak-3.jpg" alt="Se-Sering itu Motoran Malem Malem" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-4.jpg" data-caption="Ini Namanya Couple Delegasi"><img src="assets/kotak-4.jpg" alt="Ini Namanya Couple Delegasi" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-5.jpg" data-caption="Ditemenin Kerja Yeayyy"><img src="assets/kotak-5.jpg" alt="Ditemenin Kerja Yeayyy" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-6.jpg" data-caption="PS DATE YEEPPEEEE"><img src="assets/kotak-6.jpg" alt="PS DATE YEEPPEEEE" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-7.jpg" data-caption="Mirror Selfie(1)"><img src="assets/kotak-7.jpg" alt="Mirror Selfie(1)" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-8.jpg" data-caption="LUCU BGT SAYANGGGG"><img src="assets/kotak-8.jpg" alt="LUCU BGT SAYANGGGG" loading="lazy" decoding="async"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-9.jpg" data-caption="Mirror Selfie(2)"><img src="assets/kotak-9.jpg" alt="Mirror Selfie(2)" loading="lazy" decoding="async"></button></li>
       </ul>
       <div class="dots" aria-label="Pilih foto"></div>
     </section>
@@ -64,7 +67,6 @@
       </figure>
     </section>
 
-
     <section id="vn" class="reveal">
       <h2>Suaraku buat kamu</h2>
       <p class="lead">Direkam khusus untukmu. Pakai headset biar lebih terasa.</p>
@@ -73,7 +75,7 @@
         <audio preload="metadata"></audio> <!-- sumber suara diatur dari daftar rekaman di bawah -->
 
         <div class="vn-top">
-          <button class="vn-play" type="button" aria-label="Putar rekaman" aria-pressed="true">
+          <button class="vn-play" type="button" aria-label="Putar rekaman" aria-pressed="false">
             <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
             <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
           </button>
@@ -91,9 +93,9 @@
         <!-- ASSET + EDIT: satu <li> = satu rekaman. Isi data-src (file di folder assets),
              data-title, dan data-sub. Salin satu <li> untuk menambah, hapus untuk mengurangi. -->
         <ul class="vn-list" aria-label="Daftar rekaman">
-          <li><button class="vn-track" type="button" data-src="assets/suara-1.mp3" data-title="Just You - Teddy Aditya" data-sub="Lagu Pertama Buat Kamu dari Aku"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
-          <li><button class="vn-track" type="button" data-src="assets/suara-2.mp3" data-title="Happiness - Rex Orange County" data-sub="Pengen nangis jujur aku nyanyi lagu ini buat kamu"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
-          <li><button class="vn-track" type="button" data-src="assets/suara-3.mp3" data-title="Surprise 1" data-sub="Ini Surprise, dengerin aja yaa?"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/vn_nyanyi.mp3" data-title="Judul Lagu 1" data-sub="Dinyanyikan khusus buat Agnia"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/vn_nyanyi_2.mp3" data-title="Judul Lagu 2" data-sub="Dinyanyikan khusus buat Agnia"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/vn_nyanyi_3.mp3" data-title="Judul Lagu 3" data-sub="Dinyanyikan khusus buat Agnia"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
         </ul>
       </div>
     </section>
@@ -119,7 +121,7 @@
   </main>
 
   <footer>
-    <p>Dibuat dengan sayang untuk Agnia, 3 Oktober 2026.</p>
+    <p>Dibuat dengan sayang untuk Nama, 3 Oktober 2026.</p>
   </footer>
 
   <dialog id="viewer">
