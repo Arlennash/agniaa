@@ -72,6 +72,7 @@ function scrollToY(targetY, duration = 1100) {
   const ease = (t) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2);
   let lastY = startY;
   let lastTime = startTime;
+  let lastLevel = -1;
 
   isJumping = true;
   jumpCancelled = false;
@@ -83,7 +84,11 @@ function scrollToY(targetY, duration = 1100) {
     scrollTo({ top: y, behavior: 'instant' });
 
     const speed = Math.abs(y - lastY) / Math.max(now - lastTime, 1); // px per ms
-    document.documentElement.style.setProperty('--motion-blur', `${Math.min(speed * 0.9, 5).toFixed(2)}px`);
+    const level = Math.round(Math.min(speed * 0.9, 5)); // dibulatkan supaya blur tidak dihitung ulang tiap frame
+    if (level !== lastLevel) {
+      document.documentElement.style.setProperty('--motion-blur', `${level}px`);
+      lastLevel = level;
+    }
     lastY = y;
     lastTime = now;
 
@@ -159,7 +164,8 @@ const vnNow = vn.querySelector('.vn-now');
 const vnDur = vn.querySelector('.vn-dur');
 const mainVideo = document.querySelector('.video video');
 const BAR_COUNT = 44;
-let vnFrame;
+let lastFilled = -1;
+let lastClock = '';
 
 // Bentuk gelombang dibuat dari pola sinus, bukan data asli rekaman
 for (let i = 0; i < BAR_COUNT; i++) {
@@ -176,12 +182,16 @@ const formatTime = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).pa
 function renderProgress() {
   const ratio = vnAudio.duration ? vnAudio.currentTime / vnAudio.duration : 0;
   const filled = Math.round(ratio * BAR_COUNT);
-  bars.forEach((bar, i) => bar.classList.toggle('played', i < filled));
-  vnNow.textContent = formatTime(vnAudio.currentTime);
-  vnWave.setAttribute('aria-valuenow', Math.round(ratio * 100));
-
-  cancelAnimationFrame(vnFrame);
-  if (!vnAudio.paused) vnFrame = requestAnimationFrame(renderProgress);
+  if (filled !== lastFilled) {
+    bars.forEach((bar, i) => bar.classList.toggle('played', i < filled));
+    vnWave.setAttribute('aria-valuenow', Math.round(ratio * 100));
+    lastFilled = filled;
+  }
+  const clock = formatTime(vnAudio.currentTime);
+  if (clock !== lastClock) {
+    vnNow.textContent = clock;
+    lastClock = clock;
+  }
 }
 
 function seekTo(seconds) {
@@ -192,6 +202,7 @@ function seekTo(seconds) {
 
 function showDuration() { vnDur.textContent = formatTime(vnAudio.duration); }
 vnAudio.addEventListener('loadedmetadata', showDuration);
+vnAudio.addEventListener('timeupdate', renderProgress); // cukup ~4x per detik, tanpa loop animasi
 if (vnAudio.readyState >= 1) showDuration();
 
 vnPlay.addEventListener('click', () => (vnAudio.paused ? vnAudio.play() : vnAudio.pause()));
@@ -277,3 +288,11 @@ vnTracks.forEach((track, i) => {
 });
 
 loadVn(0);
+
+// Blob latar berhenti sebentar selama scroll supaya efek kaca tidak dihitung ganda
+let scrollTimer;
+addEventListener('scroll', () => {
+  document.documentElement.classList.add('is-scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => document.documentElement.classList.remove('is-scrolling'), 150);
+}, { passive: true });
