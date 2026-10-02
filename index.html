@@ -131,16 +131,6 @@
   </dialog>
 
 <script>
-  // Matikan fitur browser yang mengingat posisi scroll terakhir
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  // Paksa halaman scroll ke paling atas saat dimuat kembali
-  window.addEventListener('beforeunload', function () {
-    window.scrollTo(0, 0);
-  });
-
   // 1. Muat YouTube iFrame API
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
