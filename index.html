@@ -130,43 +130,7 @@
     <p></p>
   </dialog>
 
-<script>
-  // 1. Muat YouTube iFrame API
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  var ytPlayer;
-  const vnAudio = document.querySelector('#vn audio');
-
-  // 2. Inisialisasi Player YouTube
-  function onYouTubeIframeAPIReady() {
-    ytPlayer = new YT.Player('myVideo', {
-      events: {
-        'onStateChange': onYouTubeStateChange
-      }
-    });
-  }
-
-  // 3. Jika Video YouTube diputar, pause Voice Note
-  function onYouTubeStateChange(event) {
-    if (event.data === YT.PlayerState.PLAYING) {
-      if (vnAudio && !vnAudio.paused) {
-        vnAudio.pause();
-      }
-    }
-  }
-
-  // 4. Jika Voice Note diputar, pause Video YouTube
-  if (vnAudio) {
-    vnAudio.addEventListener('play', function() {
-      if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
-        ytPlayer.pauseVideo();
-      }
-    });
-  }
-</script>
   
 </body>
 </html>
