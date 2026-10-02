@@ -296,3 +296,18 @@ addEventListener('scroll', () => {
   clearTimeout(scrollTimer);
   scrollTimer = setTimeout(() => document.documentElement.classList.remove('is-scrolling'), 150);
 }, { passive: true });
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('myVideo', {
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onYouTubeStateChange
+    }
+  });
+}
+
+// Dipanggil saat player YouTube siap
+function onPlayerReady(event) {
+  event.target.setVolume(100); // Set volume ke 100%
+  event.target.unMute();       // Buka pembungkaman suara
+}
