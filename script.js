@@ -311,3 +311,11 @@ function onPlayerReady(event) {
   event.target.setVolume(100); // Set volume ke 100%
   event.target.unMute();       // Buka pembungkaman suara
 }
+
+// Buka suara video ke 100% setelah interaksi pertama pengguna di web
+document.addEventListener('click', function() {
+  if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+    ytPlayer.unMute();
+    ytPlayer.setVolume(100);
+  }
+}, { once: true }); // 'once: true' memastikan perintah ini hanya berjalan 1 kali
