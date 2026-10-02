@@ -56,11 +56,11 @@
       <h2>Video kita</h2>
       <p class="lead">Putar kalau lagi kangen.</p>
       <figure class="video">
-        <iframe 
-          src="https://www.youtube.com/embed/X0XvHQs1UF8?autoplay=1&loop=1&playlist=X0XvHQs1UF8&mute=1" 
+       <iframe 
+          id="myVideo"
+          src="https://www.youtube.com/embed/X0XvHQs1UF8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=X0XvHQs1UF8" 
           title="YouTube video player" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
           allowfullscreen>
         </iframe>
         <figcaption>Potongan video yang aku simpan buat kamu.</figcaption>
@@ -130,5 +130,53 @@
     <p></p>
   </dialog>
 
+<script>
+  // Matikan fitur browser yang mengingat posisi scroll terakhir
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Paksa halaman scroll ke paling atas saat dimuat kembali
+  window.addEventListener('beforeunload', function () {
+    window.scrollTo(0, 0);
+  });
+
+  // 1. Muat YouTube iFrame API
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var ytPlayer;
+  const vnAudio = document.querySelector('#vn audio');
+
+  // 2. Inisialisasi Player YouTube
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('myVideo', {
+      events: {
+        'onStateChange': onYouTubeStateChange
+      }
+    });
+  }
+
+  // 3. Jika Video YouTube diputar, pause Voice Note
+  function onYouTubeStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+      if (vnAudio && !vnAudio.paused) {
+        vnAudio.pause();
+      }
+    }
+  }
+
+  // 4. Jika Voice Note diputar, pause Video YouTube
+  if (vnAudio) {
+    vnAudio.addEventListener('play', function() {
+      if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+        ytPlayer.pauseVideo();
+      }
+    });
+  }
+</script>
+  
 </body>
 </html>
