@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selamat ulang tahun ke-19, Nama</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#beranda">Beranda</a>
+    <a href="#kenangan">Kenangan</a>
+    <a href="#video">Audio Visual</a>
+    <a href="#surat">Surat</a>
+  </nav>
+
+  <header class="hero" id="beranda">
+    <p class="hero-date">3 Oktober 2026</p>
+    <h1>Selamat ulang tahun,<br>Agnia</h1> <!-- EDIT: ganti "Nama" dengan namanya -->
+
+    <div class="hero-photo">
+      <span class="age" aria-hidden="true">19</span>
+      <!-- ASSET: Ganti assets/foto_hero.png (PNG cutout transparan, rasio sekitar 3:4) -->
+      <img src="assets/foto1.png" alt="Foto Agnia" width="600" height="800">
+    </div>
+
+    <a class="btn" href="#kenangan">Lihat kenangan kita</a>
+  </header>
+
+  <main>
+    <section id="kenangan" class="gallery reveal">
+      <h2>Kenangan kita</h2>
+      <p class="lead">Beberapa momen yang selalu bikin aku senyum.</p>
+
+      <!-- ASSET: Ganti foto_1.jpg sampai foto_6.jpg di folder assets, edit caption sesukamu -->
+      <ul class="grid">
+        <li><button class="thumb" data-full="assets/kotak-1.jpg" data-caption="Awal Cerita Kita"><img src="assets/kotak-1.jpg" alt="Awal Cerita Kita" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-2.jpg" data-caption="Ini Masuknya First Date Ga Sih?"><img src="assets/kotak-2.jpg" alt="Ini Masuknya First Date Ga Sih?" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-3.jpg" data-caption="Se-Sering itu Motoran Malem Malem"><img src="assets/kotak-3.jpg" alt="Se-Sering itu Motoran Malem Malem" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-4.jpg" data-caption="Ini Namanya Couple Delegasi"><img src="assets/kotak-4.jpg" alt="Ini Namanya Couple Delegasi" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-5.jpg" data-caption="Ditemenin Kerja Yeayyy"><img src="assets/kotak-5.jpg" alt="Ditemenin Kerja Yeayyy" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-6.jpg" data-caption="PS DATE YEEPPEEEE"><img src="assets/kotak-6.jpg" alt="PS DATE YEEPPEEEE" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-7.jpg" data-caption="Mirror Selfie(1)"><img src="assets/kotak-7.jpg" alt="Mirror Selfie(1)" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-8.jpg" data-caption="LUCU BGT SAYANGGGG"><img src="assets/kotak-8.jpg" alt="LUCU BGT SAYANGGGG" loading="lazy"></button></li>
+        <li><button class="thumb" data-full="assets/kotak-9.jpg" data-caption="Mirror Selfie(2)"><img src="assets/kotak-9.jpg" alt="Mirror Selfie(2)" loading="lazy"></button></li>
+      </ul>
+      <div class="dots" aria-label="Pilih foto"></div>
+    </section>
+
+    <section id="video" class="reveal">
+      <h2>Video kita</h2>
+      <p class="lead">Putar kalau lagi kangen.</p>
+
+      <figure class="video">
+        <!-- ASSET: Ganti assets/video_kenangan.mp4 dan poster_video.jpg -->
+        <video controls playsinline preload="metadata" poster="assets/poster_video.jpg">
+          <source src="assets/video_kenangan.mp4" type="video/mp4">
+        </video>
+        <!-- Alternatif YouTube: ganti <video> di atas dengan
+             <iframe src="https://www.youtube.com/embed/ID_VIDEO" title="Video kenangan" allowfullscreen></iframe> -->
+        <figcaption>Potongan video yang aku simpan buat kamu.</figcaption>
+      </figure>
+    </section>
+
+    <section id="vn" class="reveal">
+      <h2>Suaraku buat kamu</h2>
+      <p class="lead">Direkam khusus untukmu. Pakai headset biar lebih terasa.</p>
+
+      <div class="vn">
+        <audio preload="metadata"></audio> <!-- sumber suara diatur dari daftar rekaman di bawah -->
+
+        <div class="vn-top">
+          <button class="vn-play" type="button" aria-label="Putar rekaman" aria-pressed="true">
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
+          </button>
+          <div class="vn-meta">
+            <span class="vn-tag">Voice note</span>
+            <!-- Judul dan keterangan diisi otomatis dari daftar rekaman di bawah -->
+            <strong class="vn-title">Judul Lagu</strong>
+            <span class="vn-sub">Dinyanyikan khusus buat Agnia</span>
+          </div>
+        </div>
+
+        <div class="vn-wave" role="slider" tabindex="0" aria-label="Posisi rekaman" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+        <div class="vn-time"><span class="vn-now">0:00</span><span class="vn-dur">0:00</span></div>
+
+        <!-- ASSET + EDIT: satu <li> = satu rekaman. Isi data-src (file di folder assets),
+             data-title, dan data-sub. Salin satu <li> untuk menambah, hapus untuk mengurangi. -->
+        <ul class="vn-list" aria-label="Daftar rekaman">
+          <li><button class="vn-track" type="button" data-src="assets/suara-1.mp3" data-title="Just You - Teddy Aditya" data-sub="Lagu Pertama Buat Kamu dari Aku"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/suara-2.mp3" data-title="Happiness - Rex Orange County" data-sub="Pengen nangis jujur aku nyanyi lagu ini buat kamu"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/suara-3.mp3" data-title="Surprise 1" data-sub="Ini Surprise, dengerin aja yaa?"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+          <li><button class="vn-track" type="button" data-src="assets/suara-4.mp3" data-title="Surprise 2" data-sub="Ini Surprise, dengerin aja yaa?"><span class="vn-num"></span><span class="vn-name"></span><span class="vn-len">0:00</span></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="surat" class="letter reveal">
+      <h2>Untuk kamu</h2>
+      <button class="seal" type="button" aria-expanded="false" aria-controls="isi-surat">Buka surat</button>
+
+      <article id="isi-surat" class="paper">
+        <div class="fold">
+          <div class="page">
+            <!-- EDIT: tulis ucapanmu sendiri di sini -->
+            <p>Hai, Selamat Ulang Tahun Agnia.</p>
+            <p>Selamat ulang tahun aku ucapkan kepada pacarku, cantikku, cintaku, duniaku, dan apapun sebutan cinta tentang kamu dariku. Aku harap di umur ini, kamu mulai bisa untuk lebih mengontrol diri kamu sendiri, menghargai apapun yang kamu miliki, dan berjuang untuk diri kamu dan mungkin orang yang kamu sayangi. </p>
+            <p>Lalu permintaan maaf dari aku, yang belum bisa memberikan apa yang kamu butuhkan. Hanya ini dan beberapa hal yang bisa aku berikan untuk kamu saat ini. Aku usahakan apapun itu, semampu aku, sebisa aku. Aku harap kamu mau menerima semua ini meskipun sederhana, dan bukan sesuatu yang eksklusif yang cuma aku saja yang bisa kasih.</p>
+            <p>Masih banyak hal yang bisa aku ucapkan untuk merayakan hari ulang tahunmu ke 19 ini, tapi cukup sampai sini saja surat ini..</p>
+            <p>I Love U, Agnia. </p>
+            <p class="sign">Arya Mahardhika Irawan</p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dibuat dengan sayang untuk Agnia, 3 Oktober 2026.</p>
+  </footer>
+
+  <dialog id="viewer">
+    <form method="dialog"><button class="close" aria-label="Tutup foto">&times;</button></form>
+    <img src="" alt="">
+    <p></p>
+  </dialog>
+
+</body>
+</html>
